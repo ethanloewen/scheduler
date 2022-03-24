@@ -62,14 +62,14 @@ storiesOf("DayList", module)
     backgrounds: [{ name: "dark", value: "#222f3e", default: true }],
   })
   .add("Monday", () => (
-    <DayList days={days} day={"Monday"} setDay={action("setDay")} />
+    <DayList days={days} value={"Monday"} onChange={action("setDay")} />
   ))
   .add("Tuesday", () => (
-    <DayList days={days} day={"Tuesday"} setDay={action("setDay")} />
+    <DayList days={days} value={"Tuesday"} onChange={action("setDay")} />
   ))
   .add("Wednesday", () => (
-      <DayList days={days} day={"Wednesday"} setDay={action("setDay")} />
-  ))
+    <DayList days={days} value={"Wednesday"} onChange={action("setDay")} />
+  ));
 
 
 
@@ -100,12 +100,13 @@ storiesOf("InterviewerListItem", module)
   ))
   .add("Clickable", () => (
     <InterviewerListItem
-      id={interviewer.id}
       name={interviewer.name}
       avatar={interviewer.avatar}
-      setInterviewer={action("setInterviewer")}
+      setInterviewer={() => action("setInterviewer")(interviewer.id)}
     />
   ));
+
+  
 
 const interviewers = [
   { id: 1, name: "Sylvia Palmer", avatar: "https://i.imgur.com/LpaY82x.png" },
