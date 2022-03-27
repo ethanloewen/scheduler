@@ -43,7 +43,6 @@ export default function Application(props) {
 
   return (
     <main className="layout">
-      {console.log('interviewers', state.interviewers)}
       <section className="sidebar">
         <img
           className="sidebar--centered"
