@@ -13,12 +13,15 @@ export default function useVisualMode(init) {
   };
 
   const back = () => {
-    const tempHistory = history;
-    tempHistory.pop();
-    setHistory(tempHistory);
-    
-    const lastElm = history.length - 1;
-    setMode(history[lastElm]);
+    if (history.length >= 2) {
+      const tempHistory = history;
+      tempHistory.pop();
+      setHistory(tempHistory);
+  
+      const lastElm = history.length - 1;
+      setMode(history[lastElm]);
+    }
+
   };
 
   return { 
