@@ -24,14 +24,29 @@ export default function Application(props) {
     };
 
     return axios.put(`http://localhost:8001/api/appointments/${id}`, appointment)
-    .then((res) => {
-      console.log('result', res);
+    .then(() => {
       setState({ ...state, appointments });
     })
     .catch(() => console.log('Error booking interview'));
   }
 
+  const cancelInterview = function(id) {
+    const appointment = {
+      ...state.appointments[id],
+      interview: null
+    };
 
+    const appointments = {
+      ...state.appointments,
+      [id]: appointment
+    };
+
+    return axios.delete(`http://localhost:8001/api/appointments/${id}`)
+    .then((res) => {
+      setState({ ...state, appointments });
+    })
+    .catch(() => console.log('Error deleting interview'));
+  }
 
   
 
@@ -52,6 +67,7 @@ export default function Application(props) {
       interview={interview}
       interviewers={dailyInterviewers}
       bookInterview={bookInterview}
+      cancelInterview={cancelInterview}
       />
     );
   });
