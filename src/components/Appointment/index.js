@@ -38,7 +38,7 @@ export default function Appointment(props) {
         />
       )}
       {mode === CREATE && <Form onSave={save} onCancel={() => back()} interviewers={props.interviewers} />}
-      {mode === SAVING && <Status ></Status>}
+      {mode === SAVING && <Status message={'Saving...'}/>}
     </article>
   );
 }

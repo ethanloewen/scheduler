@@ -12,7 +12,7 @@ export default function Application(props) {
     appointments: {}
   });
 
-  function bookInterview(id, interview) {
+  const bookInterview = function(id, interview) {
     const appointment = {
       ...state.appointments[id],
       interview: { ...interview }
@@ -30,6 +30,8 @@ export default function Application(props) {
     })
     .catch(() => console.log('Error booking interview'));
   }
+
+
 
   
 
