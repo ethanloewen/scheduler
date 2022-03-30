@@ -35,15 +35,15 @@ export default function useApplicationData() {
       spots: (state.days[index].spots - 1)
     };
 
-    let days = state.days;
+    let days = [ ...state.days ];
     days[index] = day;
     // console.log('old days obj', state.days);
     // console.log('new days obj', days);
   
     return axios.put(`http://localhost:8001/api/appointments/${id}`, appointment)
     .then(() => {
-      setState({ ...state, appointments });
-      //setState({ ...state, days});
+      setState({ ...state, appointments, days });
+      // setState({ ...state,  });
     });
   }
   
@@ -64,7 +64,7 @@ export default function useApplicationData() {
       spots: (state.days[index].spots + 1)
     };
 
-    let days = state.days;
+    let days = [ ...state.days ];
     days[index] = day;
 
     // console.log('old days obj', state.days);
@@ -72,7 +72,7 @@ export default function useApplicationData() {
   
     return axios.delete(`http://localhost:8001/api/appointments/${id}`)
     .then((res) => {
-      setState({ ...state, appointments });
+      setState({ ...state, appointments, days });
     });
   }
 
