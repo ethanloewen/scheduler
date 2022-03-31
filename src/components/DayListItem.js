@@ -3,6 +3,7 @@ import './DayListItem.scss';
 import classNames from "classnames";
 
 export default function DayListItem(props) {
+  // change the returned string based on the avaliable spots
   const formatSpots = (spots) => {
     if (spots >= 2) {
       return `${spots} spots remaining`;
@@ -13,6 +14,7 @@ export default function DayListItem(props) {
     return 'no spots remaining'
   };
 
+  // set class name that will be passed to the li
   const dayClass = classNames('day-list__item', {
     'day-list__item--selected': props.selected,
     'day-list__item--full': props.spots === 0

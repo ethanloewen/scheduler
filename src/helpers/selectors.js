@@ -1,3 +1,4 @@
+// find appointments for a given day and return them as an array
 export function getAppointmentsForDay(state, day) {
   const filteredName = state.days.filter(x => x.name === day);
   let outputArr = [];
@@ -10,6 +11,7 @@ export function getAppointmentsForDay(state, day) {
   return outputArr;
 }
 
+// find interviewers for a given day and return them as an array
 export function getInterviewersForDay(state, day) {
   const filteredName = state.days.filter(x => x.name === day);
   let outputArr = [];
@@ -22,6 +24,7 @@ export function getInterviewersForDay(state, day) {
   return outputArr;
 }
 
+// find the given interview and return the updated object (return null if the interview is null)
 export function getInterview(state, interview) {
   if (interview !== null) {
     const localInterviewer = interview.interviewer;

@@ -24,6 +24,7 @@ export default function Appointment(props) {
     props.interview ? SHOW : EMPTY
   );
 
+  // save information and transition to the SAVING mode, once complete transition to SHOW mode
   function save(name, interviewer) {
     const interview = {
       student: name,
@@ -36,6 +37,7 @@ export default function Appointment(props) {
     .catch(error => transition(ERROR_SAVE, true));
   }
 
+  // delete interview and transition to the DELETING mode, once complete transition to EMPTY mode
   function destroy() {
     transition(DELETING, true);
     props.cancelInterview(props.id)

@@ -3,7 +3,7 @@ import classNames from "classnames";
 import './InterviewerListItem.scss';
 
 export default function InterviewerListItem(props) {
-
+  // set class name that will be passed to the li
   const interviewerClass = classNames('interviewers__item', {
     'interviewers__item--selected': props.selected
   });

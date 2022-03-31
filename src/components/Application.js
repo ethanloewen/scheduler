@@ -2,11 +2,11 @@ import React from "react";
 import "components/Application.scss";
 import DayList from "./DayList";
 import Appointment from "./Appointment";
-//import axios from 'axios';
 import useApplicationData from "hooks/useApplicationData";
 import { getAppointmentsForDay, getInterviewersForDay, getInterview } from "helpers/selectors";
 
 export default function Application(props) {
+  // generate object with useApplicationData funciton
   const {
     state,
     setDay,
@@ -16,11 +16,8 @@ export default function Application(props) {
 
   const interviewers = getInterviewersForDay(state, state.day);
 
-  //let dailyAppointments = [];
-  //dailyAppointments = getAppointmentsForDay(state, state.day);
-  //let dailyInterviewers = getInterviewersForDay(state, state.day);
+  // generate array of Appointment components
   const appointments = getAppointmentsForDay(state, state.day).map((app) => {
-    
     return (
       <Appointment
       key={app.id}
@@ -33,7 +30,6 @@ export default function Application(props) {
       />
     );
   });
-
 
   return (
     <main className="layout">
