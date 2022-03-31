@@ -1,5 +1,7 @@
 # Interview Scheduler
 
+Interview Scheduler is a single page React application that allows users to easily book and cancel interviews.
+
 ## Setup
 
 Install dependencies with `npm install`.
@@ -21,3 +23,13 @@ npm test
 ```sh
 npm run storybook
 ```
+
+## Dependencies
+
+- Node.js
+- axios
+- classnames
+- normalize.css
+- react
+- react-dom
+- react-scripts

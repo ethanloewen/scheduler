@@ -1,8 +1,6 @@
 import React, { Fragment } from "react";
-
 import { storiesOf } from "@storybook/react";
 import { action } from "@storybook/addon-actions";
-
 import "index.scss";
 
 import Button from "components/Button";
@@ -45,8 +43,8 @@ storiesOf("Button", module)
     <DayListItem name="Tuesday" setDay={action("setDay")} spots={5} />
   ));
 
-
   
+// example data
 const days = [
   {
     id: 1,
@@ -80,7 +78,7 @@ storiesOf("DayList", module)
   ));
 
 
-
+// example data
 const interviewer = {
   id: 1,
   name: "Sylvia Palmer",
@@ -115,7 +113,7 @@ storiesOf("InterviewerListItem", module)
   ));
 
 
-
+// example data
 const interviewers = [
   { id: 1, name: "Sylvia Palmer", avatar: "https://i.imgur.com/LpaY82x.png" },
   { id: 2, name: "Tori Malcolm", avatar: "https://i.imgur.com/Nmx0Qxo.png" },
@@ -146,9 +144,7 @@ storiesOf("InterviewerList", module)
     />
   ));
 
-//-----------------------
-// Appointment component
-//-----------------------
+
 storiesOf("Appointment", module)
   .addParameters({
     backgrounds: [{ name: "white", value: "#fff", default: true }]
