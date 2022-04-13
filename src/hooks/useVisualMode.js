@@ -7,25 +7,25 @@ export default function useVisualMode(init) {
   const transition = (newMode, replace = false) => {
     setMode(newMode);
 
-    if (replace) {
+    if(replace) {
+      let tempHistory = [...history];
+      tempHistory[tempHistory.length -1] = newMode;
+      setHistory(tempHistory);
       return;
     }
-
-    const tempHistory = history;
-    tempHistory.push(newMode);
+    
+    let tempHistory = [...history, newMode];
     setHistory(tempHistory);
   };
 
   const back = () => {
-    if (history.length >= 2) {
-      const tempHistory = history;
-      tempHistory.pop();
-      setHistory(tempHistory);
+    let tempHistory = [...history];
+    tempHistory.pop();
+    setHistory(tempHistory);
   
-      const lastElm = history.length - 1;
-      setMode(history[lastElm]);
+    if(history.length > 1) {
+      setMode(tempHistory[tempHistory.length-1]);
     }
-
   };
 
   return { 

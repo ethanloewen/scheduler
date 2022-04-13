@@ -18,7 +18,7 @@ export default function useApplicationData() {
     }
   }
   
-  const bookInterview = function(id, interview) {
+  const bookInterview = function(id, interview, edit) {
     const appointment = {
       ...state.appointments[id],
       interview: { ...interview }
@@ -30,20 +30,23 @@ export default function useApplicationData() {
     };
 
     const index = getDayIndex();
+
+    let spotsAmt = (state.days[index].spots - 1)
+    if (edit) {
+      spotsAmt = state.days[index].spots
+    }
+
     const day = {
       ...state.days[index],
-      spots: (state.days[index].spots - 1)
+      spots: spotsAmt
     };
 
     let days = [ ...state.days ];
     days[index] = day;
-    // console.log('old days obj', state.days);
-    // console.log('new days obj', days);
   
     return axios.put(`http://localhost:8001/api/appointments/${id}`, appointment)
     .then(() => {
       setState({ ...state, appointments, days });
-      // setState({ ...state,  });
     });
   }
   
@@ -66,9 +69,6 @@ export default function useApplicationData() {
 
     let days = [ ...state.days ];
     days[index] = day;
-
-    // console.log('old days obj', state.days);
-    // console.log('new days obj', days);
   
     return axios.delete(`http://localhost:8001/api/appointments/${id}`)
     .then((res) => {

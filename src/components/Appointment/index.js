@@ -25,11 +25,10 @@ export default function Appointment(props) {
   );
 
   // save information and transition to the SAVING mode, once complete transition to SHOW mode
-  function save(name, interviewer) {
+  function save(name, interviewer, edit = false) {
 
-    // throw error if no interviewer is selected
-    if (!interviewer) {
-      return transition(ERROR_SAVE, true)
+    if (edit) {
+      console.log('Edit hit');
     }
 
     const interview = {
@@ -38,7 +37,7 @@ export default function Appointment(props) {
     };
 
     transition(SAVING);
-    props.bookInterview(props.id, interview)
+    props.bookInterview(props.id, interview, edit)
     .then(() => transition(SHOW))
     .catch(error => transition(ERROR_SAVE, true));
   }
@@ -67,7 +66,7 @@ export default function Appointment(props) {
       {mode === SAVING && <Status message={'Saving...'}/>}
       {mode === DELETING && <Status message={'Deleting...'}/>}
       {mode === CONFIRM && <Confirm onCancel={back} onConfirm={destroy} message={'Are you sure you would like to delete?'} />}
-      {mode === EDIT && <Form onSave={save} onCancel={back} student={props.interview.student} interviewer={props.interview.interviewer.id} interviewers={props.interviewers} />}
+      {mode === EDIT && <Form onSave={save} onCancel={back} student={props.interview.student} interviewer={props.interview.interviewer.id} interviewers={props.interviewers} edit={true} />}
       {mode === ERROR_DELETE && <Error onClose={back} message={'Could not cancel appointment'} />}
       {mode === ERROR_SAVE && <Error onClose={back} message={'Could not save appointment'} />}
     </article>
