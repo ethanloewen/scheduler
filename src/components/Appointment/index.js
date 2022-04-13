@@ -26,11 +26,6 @@ export default function Appointment(props) {
 
   // save information and transition to the SAVING mode, once complete transition to SHOW mode
   function save(name, interviewer, edit = false) {
-
-    if (edit) {
-      console.log('Edit hit');
-    }
-
     const interview = {
       student: name,
       interviewer
