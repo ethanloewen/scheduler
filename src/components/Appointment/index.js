@@ -26,6 +26,12 @@ export default function Appointment(props) {
 
   // save information and transition to the SAVING mode, once complete transition to SHOW mode
   function save(name, interviewer) {
+
+    // throw error if no interviewer is selected
+    if (!interviewer) {
+      return transition(ERROR_SAVE, true)
+    }
+
     const interview = {
       student: name,
       interviewer
